@@ -9,7 +9,6 @@ import {
 import uploadConfig from '@config/upload';
 
 import { Exclude, Expose } from 'class-transformer';
-import { String } from 'aws-sdk/clients/cloudsearchdomain';
 
 @Entity('users')
 class User {

@@ -20,7 +20,7 @@ interface IRequest {
 @injectable()
 class CreateTransactionService {
   constructor(
-    @inject('TransactionRepository')
+    @inject('TransactionsRepository')
     private transactionsRepository: ITransactionsRepository,
     @inject('CriteriasRepository')
     private criteriasRepository: ICriteriasRepository,
@@ -43,17 +43,13 @@ class CreateTransactionService {
       criteriasIDs,
     );
 
-    if (criteriaItems.length !== criterias.length) {
-      throw new AppError('Product missing');
-    }
-
     const criteriasList = criteriaItems.map(criteriaItem => {
       const criteriaList = criterias.find(
         criteriaFind => criteriaFind.id === criteriaItem.id,
       );
 
       if (!criteriaList) {
-        throw new AppError('Product not found');
+        throw new AppError('Criteria not found');
       }
 
       return {
@@ -62,12 +58,16 @@ class CreateTransactionService {
       };
     });
 
+    user.score = criteriasList.reduce((sum: number, { score }) => {
+      return sum + score;
+    }, 0);
+
     const transaction = await this.transactionsRepository.create({
       user,
       criterias: criteriasList,
     });
 
-    //await this.productsRepository.updateQuantity(transaction);
+    await this.usersRepository.save(user);
 
     return transaction;
   }

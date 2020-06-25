@@ -1,4 +1,5 @@
 import ICreateUserDTO from '../dtos/ICreateUserDTO';
+import IUpdateUserScoreDTO from '../dtos/IUpdateUserScoreDTO';
 
 import User from '../infra/typeorm/entities/User';
 

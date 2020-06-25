@@ -27,10 +27,6 @@ export default class CreateTransactionsCriterias1593017688195
             type: 'integer',
           },
           {
-            name: 'icon',
-            type: 'varchar',
-          },
-          {
             name: 'created_at',
             type: 'timestamp',
             default: 'now()',

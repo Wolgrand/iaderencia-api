@@ -6,12 +6,13 @@ import sessionsRouter from '@modules/users/infra/http/routes/sessions.routes';
 import passwordRouter from '@modules/users/infra/http/routes/password.routes';
 import profileRouter from '@modules/users/infra/http/routes/profile.routes';
 import rankRouter from '@modules/users/infra/http/routes/rank.routes';
+import playerRouter from '@modules/users/infra/http/routes/player.routes';
 import criteriasRouter from '@modules/criterias/infra/http/routes/criterias.routes';
 import transactionsRouter from '@modules/transactions/infra/http/routes/transactions.routes';
 
 const routes = Router();
 
-routes.use('/providers', providersRouter);
+routes.use('/players', playerRouter);
 routes.use('/users', usersRouter);
 routes.use('/sessions', sessionsRouter);
 routes.use('/password', passwordRouter);

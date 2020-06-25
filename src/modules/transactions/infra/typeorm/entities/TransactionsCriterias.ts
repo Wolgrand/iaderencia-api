@@ -23,7 +23,7 @@ class TransactionsCriterias {
   @JoinColumn({ name: 'transaction_id' })
   transaction: Transaction;
 
-  @ManyToOne(() => Criteria, criteria => criteria.transaction_criterias)
+  @ManyToOne(() => Criteria, criteria => criteria.transactions_criterias)
   @JoinColumn({ name: 'criteria_id' })
   criteria: Criteria;
 

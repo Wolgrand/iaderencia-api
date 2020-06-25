@@ -11,7 +11,7 @@ interface IRequest {
 }
 
 @injectable()
-class FindTRansactionService {
+class FindTransactionService {
   constructor(
     @inject('TransactionsRepository')
     private transactionsRepository: ITransactionsRepository,
@@ -23,7 +23,7 @@ class FindTRansactionService {
     private usersRepository: IUsersRepository,
   ) {}
 
-  public async execute({ id }: IRequest): Promise<Transaction | undefined> {
+  public async execute({ id }: IRequest): Promise<Transaction[] | undefined> {
     const transaction = await this.transactionsRepository.findById(id);
 
     if (!transaction) {
@@ -34,4 +34,4 @@ class FindTRansactionService {
   }
 }
 
-export default FindTRansactionService;
+export default FindTransactionService;

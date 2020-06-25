@@ -17,7 +17,7 @@ class TransactionsRepository implements ITransactionsRepository {
   }: ICreateTransactionDTO): Promise<Transaction> {
     const transaction = this.ormRepository.create({
       user,
-      transaction_repositories: criterias,
+      transaction_criterias: criterias,
     });
 
     await this.ormRepository.save(transaction);
@@ -25,8 +25,12 @@ class TransactionsRepository implements ITransactionsRepository {
     return transaction;
   }
 
-  public async findById(id: string): Promise<Transaction | undefined> {
-    const findTransaction = await this.ormRepository.findOne(id);
+  public async findById(id: string): Promise<Transaction[] | undefined> {
+    const findTransaction = await this.ormRepository.find({
+      where: {
+        user_id: id,
+      },
+    });
 
     return findTransaction;
   }
