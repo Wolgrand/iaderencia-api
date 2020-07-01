@@ -7,7 +7,7 @@ import Transaction from '../infra/typeorm/entities/Transaction';
 import ITransactionsRepository from '../repositories/ITransactionsRepository';
 
 interface IRequest {
-  id: string;
+  user_id: string;
 }
 
 @injectable()
@@ -23,14 +23,16 @@ class FindTransactionService {
     private usersRepository: IUsersRepository,
   ) {}
 
-  public async execute({ id }: IRequest): Promise<Transaction[] | undefined> {
-    const transaction = await this.transactionsRepository.findById(id);
+  public async execute({
+    user_id,
+  }: IRequest): Promise<Transaction[] | undefined> {
+    const transactions = await this.transactionsRepository.findById(user_id);
 
-    if (!transaction) {
-      throw new AppError('Transaction not found');
+    if (!transactions) {
+      throw new AppError('Transactions not found');
     }
 
-    return transaction;
+    return transactions;
   }
 }
 

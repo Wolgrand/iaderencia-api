@@ -3,8 +3,9 @@ import { container } from 'tsyringe';
 
 import ListRankService from '@modules/users/services/ListRankService';
 import { classToClass } from 'class-transformer';
+import top3Router from '../routes/top3.routes';
 
-export default class RankController {
+export default class Top3Controller {
   public async show(request: Request, response: Response): Promise<Response> {
     const listGPs = container.resolve(ListRankService);
 
@@ -29,7 +30,15 @@ export default class RankController {
         array[i].rank = rank;
       }
 
-      return response.json(classToClass(array));
+      const top3 = [];
+
+      const length = array.length <= 3 ? array.length : 3;
+
+      for (let i = 0; i < length; i++) {
+        top3.push(array[i]);
+      }
+
+      return response.json(classToClass(top3));
     }
   }
 }

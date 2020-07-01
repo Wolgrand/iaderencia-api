@@ -2,7 +2,7 @@ import { injectable, inject } from 'tsyringe';
 
 import User from '@modules/users/infra/typeorm/entities/User';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
-import IHashProvider from '@modules/users/providers/HashProvider/models/IHashProvider';
+import ITransactionsRepository from '@modules/transactions/repositories/ITransactionsRepository';
 
 interface IRequest {
   name: string;
@@ -13,13 +13,10 @@ interface IRequest {
 }
 
 @injectable()
-class CreateUserService {
+class ListRankService {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
-
-    @inject('HashProvider')
-    private hashProvider: IHashProvider,
   ) {}
 
   public async execute(): Promise<User[]> {
@@ -29,4 +26,4 @@ class CreateUserService {
   }
 }
 
-export default CreateUserService;
+export default ListRankService;

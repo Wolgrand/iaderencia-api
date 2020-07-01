@@ -6,10 +6,12 @@ import {
   JoinColumn,
   PrimaryGeneratedColumn,
   ManyToOne,
+  OneToOne,
 } from 'typeorm';
 
 import Transaction from '@modules/transactions/infra/typeorm/entities/Transaction';
 import Criteria from '@modules/criterias/infra/typeorm/entities/Criteria';
+import User from '@modules/users/infra/typeorm/entities/User';
 
 @Entity('transactions_criterias')
 class TransactionsCriterias {
@@ -23,7 +25,10 @@ class TransactionsCriterias {
   @JoinColumn({ name: 'transaction_id' })
   transaction: Transaction;
 
-  @ManyToOne(() => Criteria, criteria => criteria.transactions_criterias)
+  @JoinColumn({ name: 'user_id' })
+  user: User;
+
+  @OneToOne(() => Criteria, { eager: true })
   @JoinColumn({ name: 'criteria_id' })
   criteria: Criteria;
 
@@ -35,9 +40,6 @@ class TransactionsCriterias {
 
   @Column()
   score: number;
-
-  @Column()
-  icon: string;
 
   @CreateDateColumn()
   created_at: Date;

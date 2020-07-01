@@ -14,6 +14,7 @@ interface ICriteria {
 
 interface IRequest {
   user_id: string;
+  newScore: number;
   criterias: ICriteria[];
 }
 
@@ -28,7 +29,11 @@ class CreateTransactionService {
     private usersRepository: IUsersRepository,
   ) {}
 
-  public async execute({ user_id, criterias }: IRequest): Promise<Transaction> {
+  public async execute({
+    user_id,
+    criterias,
+    newScore,
+  }: IRequest): Promise<Transaction> {
     const user = await this.usersRepository.findById(user_id);
 
     if (!user) {
@@ -58,9 +63,11 @@ class CreateTransactionService {
       };
     });
 
-    user.score = criteriasList.reduce((sum: number, { score }) => {
+    /*     user.score = criteriasList.reduce((sum: number, { score }) => {
       return sum + score;
-    }, 0);
+    }, 0); */
+
+    user.score += Math.ceil(newScore);
 
     const transaction = await this.transactionsRepository.create({
       user,

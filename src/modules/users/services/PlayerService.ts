@@ -1,8 +1,9 @@
 import { injectable, inject } from 'tsyringe';
 
 import User from '@modules/users/infra/typeorm/entities/User';
+
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
-import IHashProvider from '@modules/users/providers/HashProvider/models/IHashProvider';
+import ITransactionsRepository from '@modules/transactions/repositories/ITransactionsRepository';
 
 interface IRequest {
   name: string;
@@ -17,6 +18,9 @@ class PlayerService {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
+
+    @inject('TransactionsRepository')
+    private transactionsRepository: ITransactionsRepository,
   ) {}
 
   public async execute(user_id: string): Promise<User | undefined> {

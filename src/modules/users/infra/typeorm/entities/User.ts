@@ -4,9 +4,11 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
 
 import uploadConfig from '@config/upload';
+import TransactionsCriterias from '@modules/transactions/infra/typeorm/entities/TransactionsCriterias';
 
 import { Exclude, Expose } from 'class-transformer';
 
@@ -25,10 +27,16 @@ class User {
   @Exclude()
   password: string;
 
+  @OneToMany(
+    type => TransactionsCriterias,
+    transactionsCriterias => transactionsCriterias.user,
+  )
+  transactions: TransactionsCriterias[];
+
   @Column()
   avatar: string;
 
-  @Column()
+  @Column('decimal')
   score: number;
 
   @Column()

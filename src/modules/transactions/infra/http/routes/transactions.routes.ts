@@ -6,6 +6,6 @@ const transactionsRouter = Router();
 const transactionController = new TransactionsController();
 
 transactionsRouter.post('/', transactionController.create);
-transactionsRouter.get('/:id', transactionController.show);
+transactionsRouter.get('/:user_id', transactionController.show);
 
 export default transactionsRouter;
