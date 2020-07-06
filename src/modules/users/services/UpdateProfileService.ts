@@ -11,6 +11,7 @@ interface IRequest {
   email: string;
   old_password?: string;
   password?: string;
+  role?: string;
 }
 
 @injectable()
@@ -29,6 +30,7 @@ class UpdateProfileService {
     email,
     old_password,
     password,
+    role,
   }: IRequest): Promise<User> {
     const user = await this.usersRepository.findById(user_id);
 
@@ -62,6 +64,10 @@ class UpdateProfileService {
       }
 
       user.password = await this.hashProvider.generateHash(password);
+    }
+
+    if (role) {
+      user.role = role;
     }
 
     return this.usersRepository.save(user);

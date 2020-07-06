@@ -25,7 +25,7 @@ class Criteria {
 
   @OneToMany(
     () => TransactionsCriterias,
-    transactionsCriterias => transactionsCriterias.transactions,
+    transactionsCriterias => transactionsCriterias.transaction,
   )
   transactions_criterias: TransactionsCriterias[];
 
