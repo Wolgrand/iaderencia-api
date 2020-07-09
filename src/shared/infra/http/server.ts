@@ -13,6 +13,7 @@ import '@shared/infra/typeorm';
 import '@shared/container';
 
 const app = express();
+const PORT: string | number = process.env.PORT || 3333;
 
 app.use(cors());
 app.use(express.json());
@@ -39,7 +40,4 @@ app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
   });
 });
 
-app.listen(3333, () => {
-  // eslint-disable-next-line no-console
-  console.log(' 🚀 Server started on port 3333');
-});
+app.listen(PORT, () => console.log(`hosting @${PORT}🚀`));
