@@ -3,6 +3,7 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 import CreateCriteriaService from '@modules/criterias/services/CreateCriteriaService';
 import ListCriteriaService from '@modules/criterias/services/ListCriteriaService';
+import DeleteCriteriaService from '@modules/criterias/services/DeleteCriteriaService';
 
 export default class CriteriasController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -25,5 +26,15 @@ export default class CriteriasController {
     const criterias = await listCriterias.execute();
 
     return response.json(criterias);
+  }
+
+  public async delete(request: Request, response: Response): Promise<Response> {
+    const deleteCriteria = container.resolve(DeleteCriteriaService);
+
+    const { id } = request.params;
+
+    const criteria = await deleteCriteria.execute(id);
+
+    return response.json(criteria);
   }
 }

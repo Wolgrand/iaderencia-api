@@ -4,4 +4,6 @@ export default interface ICreateUserDTO {
   password: string;
   score: number;
   role: string;
+  company: string;
+  department: string;
 }

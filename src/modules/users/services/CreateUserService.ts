@@ -13,6 +13,8 @@ interface IRequest {
   password: string;
   role?: string;
   score?: number;
+  company?: string;
+  department?: string;
 }
 
 @injectable()
@@ -30,6 +32,8 @@ class CreateUserService {
     email,
     password,
     role,
+    company,
+    department,
   }: IRequest): Promise<User> {
     const checkUserExists = await this.usersRepository.findByEmail(email);
 
@@ -39,14 +43,49 @@ class CreateUserService {
 
     const hashedPassword = await this.hashProvider.generateHash(password);
 
+    let setRole = 'gp';
+    let setDepartment = '';
+    let setCompany = '';
+
+    if (role) {
+      setRole = role;
+    }
+
+    if (department) {
+      setDepartment = department;
+    }
+
+    if (company) {
+      setCompany = company;
+    }
+
     const user = await this.usersRepository.create({
       name,
       email,
       password: hashedPassword,
       score: 0,
-      role: 'gp',
+      role: setRole,
+      company: setCompany,
+      department: setDepartment,
     });
 
+    return user;
+  }
+
+  public async show(): Promise<User[] | undefined> {
+    const users = await this.usersRepository.findAllUsers();
+
+    return users;
+  }
+
+  public async delete(id: string): Promise<User | undefined> {
+    const user = await this.usersRepository.findById(id);
+
+    if (!user) {
+      throw new AppError('User not found');
+    }
+
+    await this.usersRepository.delete(user);
     return user;
   }
 }

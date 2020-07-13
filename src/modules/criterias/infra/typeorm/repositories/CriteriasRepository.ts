@@ -50,6 +50,22 @@ class CriteriasRepository implements ICriteriasRepository {
 
     return findCriterias;
   }
+
+  public async findById(id: string): Promise<Criteria> {
+    const findCriteria = await this.ormRepository.find({
+      where: {
+        id,
+      },
+    });
+
+    return findCriteria;
+  }
+
+  public async delete(criteria: Criteria): Promise<Criteria> {
+    await this.ormRepository.remove(criteria);
+
+    return criteria;
+  }
 }
 
 export default CriteriasRepository;

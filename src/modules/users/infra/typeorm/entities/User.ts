@@ -42,6 +42,12 @@ class User {
   @Column()
   role: string;
 
+  @Column()
+  department: string;
+
+  @Column()
+  company: string;
+
   @CreateDateColumn()
   created_at: Date;
 

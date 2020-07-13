@@ -37,6 +37,12 @@ class UsersRepository implements IUsersRepository {
     return users;
   }
 
+  public async findAllUsers(): Promise<User[]> {
+    const users = await this.ormRepository.find();
+
+    return users;
+  }
+
   public async create(userData: ICreateUserDTO): Promise<User> {
     const user = this.ormRepository.create(userData);
 
@@ -47,6 +53,10 @@ class UsersRepository implements IUsersRepository {
 
   public async save(user: User): Promise<User> {
     return this.ormRepository.save(user);
+  }
+
+  public async delete(user: User): Promise<User> {
+    return this.ormRepository.remove(user);
   }
 }
 
