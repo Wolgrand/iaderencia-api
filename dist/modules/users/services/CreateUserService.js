@@ -31,7 +31,9 @@ let CreateUserService = (_dec = (0, _tsyringe.injectable)(), _dec2 = function (t
     name,
     email,
     password,
-    role
+    role,
+    company,
+    department
   }) {
     const checkUserExists = await this.usersRepository.findByEmail(email);
 
@@ -40,13 +42,47 @@ let CreateUserService = (_dec = (0, _tsyringe.injectable)(), _dec2 = function (t
     }
 
     const hashedPassword = await this.hashProvider.generateHash(password);
+    let setRole = 'gp';
+    let setDepartment = '';
+    let setCompany = '';
+
+    if (role) {
+      setRole = role;
+    }
+
+    if (department) {
+      setDepartment = department;
+    }
+
+    if (company) {
+      setCompany = company;
+    }
+
     const user = await this.usersRepository.create({
       name,
       email,
       password: hashedPassword,
       score: 0,
-      role: 'gp'
+      role: setRole,
+      company: setCompany,
+      department: setDepartment
     });
+    return user;
+  }
+
+  async show() {
+    const users = await this.usersRepository.findAllUsers();
+    return users;
+  }
+
+  async delete(id) {
+    const user = await this.usersRepository.findById(id);
+
+    if (!user) {
+      throw new _AppError.default('User not found');
+    }
+
+    await this.usersRepository.delete(user);
     return user;
   }
 

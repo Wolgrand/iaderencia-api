@@ -33,7 +33,9 @@ let UpdateProfileService = (_dec = (0, _tsyringe.injectable)(), _dec2 = function
     email,
     old_password,
     password,
-    role
+    role,
+    department,
+    company
   }) {
     const user = await this.usersRepository.findById(user_id);
 
@@ -66,6 +68,14 @@ let UpdateProfileService = (_dec = (0, _tsyringe.injectable)(), _dec2 = function
 
     if (role) {
       user.role = role;
+    }
+
+    if (department) {
+      user.department = department;
+    }
+
+    if (company) {
+      user.company = company;
     }
 
     return this.usersRepository.save(user);

@@ -14,6 +14,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const criteriasRouter = (0, _express.Router)();
 const criteriasController = new _CriteriasController.default();
 criteriasRouter.post('/', criteriasController.create);
+criteriasRouter.delete('/:id', criteriasController.delete);
 criteriasRouter.get('/', criteriasController.show);
 var _default = criteriasRouter;
 exports.default = _default;

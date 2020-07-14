@@ -50,6 +50,20 @@ class CriteriasRepository {
     return findCriterias;
   }
 
+  async findById(id) {
+    const findCriteria = await this.ormRepository.find({
+      where: {
+        id
+      }
+    });
+    return findCriteria;
+  }
+
+  async delete(criteria) {
+    await this.ormRepository.remove(criteria);
+    return criteria;
+  }
+
 }
 
 var _default = CriteriasRepository;

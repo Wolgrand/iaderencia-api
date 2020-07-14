@@ -22,6 +22,7 @@ profileRouter.put('/', (0, _celebrate.celebrate)({
   [_celebrate.Segments.BODY]: {
     name: _celebrate.Joi.string().required(),
     email: _celebrate.Joi.string().email().required(),
+    role: _celebrate.Joi.string(),
     old_password: _celebrate.Joi.string(),
     password: _celebrate.Joi.string(),
     password_confirmation: _celebrate.Joi.string().valid(_celebrate.Joi.ref('password'))

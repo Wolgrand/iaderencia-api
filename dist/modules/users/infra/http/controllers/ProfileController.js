@@ -33,7 +33,10 @@ class ProfileController {
       name,
       email,
       old_password,
-      password
+      password,
+      role,
+      department,
+      company
     } = request.body;
 
     const updateProfile = _tsyringe.container.resolve(_UpdateProfileService.default);
@@ -42,6 +45,9 @@ class ProfileController {
       user_id,
       name,
       email,
+      role,
+      department,
+      company,
       old_password,
       password
     });

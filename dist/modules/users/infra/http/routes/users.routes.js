@@ -25,6 +25,8 @@ const usersRouter = (0, _express.Router)();
 const upload = (0, _multer.default)(_upload.default.multer);
 const usersController = new _UsersController.default();
 const userAvatarController = new _UserAvatarController.default();
+usersRouter.get('/all', usersController.show);
+usersRouter.delete('/:id', usersController.delete);
 usersRouter.post('/', (0, _celebrate.celebrate)({
   [_celebrate.Segments.BODY]: {
     name: _celebrate.Joi.string().required(),

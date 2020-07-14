@@ -44,6 +44,11 @@ class UsersRepository {
     return users;
   }
 
+  async findAllUsers() {
+    const users = await this.ormRepository.find();
+    return users;
+  }
+
   async create(userData) {
     const user = this.ormRepository.create(userData);
     await this.ormRepository.save(userData);
@@ -52,6 +57,10 @@ class UsersRepository {
 
   async save(user) {
     return this.ormRepository.save(user);
+  }
+
+  async delete(user) {
+    return this.ormRepository.remove(user);
   }
 
 }
