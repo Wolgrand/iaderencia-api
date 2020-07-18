@@ -28,9 +28,7 @@ export default class CreateUsers1587554722978 implements MigrationInterface {
           },
           {
             name: 'score',
-            type: 'decimal',
-            precision: 8,
-            scale: 1,
+            type: 'integer',
           },
           {
             name: 'role',
