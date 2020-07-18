@@ -31,7 +31,7 @@ class UsersRepository implements IUsersRepository {
 
   public async findAllGPs(): Promise<User[]> {
     const users = await this.ormRepository.find({
-      where: { role: 'gp' },
+      where: { role: 'player' },
     });
 
     return users;
