@@ -66,6 +66,12 @@ class CriteriasRepository implements ICriteriasRepository {
 
     return criteria;
   }
+
+  public async update(criteria: Criteria): Promise<Criteria> {
+    await this.ormRepository.save(criteria);
+
+    return criteria;
+  }
 }
 
 export default CriteriasRepository;

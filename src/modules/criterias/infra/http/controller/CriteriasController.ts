@@ -4,6 +4,7 @@ import { container } from 'tsyringe';
 import CreateCriteriaService from '@modules/criterias/services/CreateCriteriaService';
 import ListCriteriaService from '@modules/criterias/services/ListCriteriaService';
 import DeleteCriteriaService from '@modules/criterias/services/DeleteCriteriaService';
+import UpdateCriteriaService from '@modules/criterias/services/UpdateCriteriaService';
 
 export default class CriteriasController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -34,6 +35,16 @@ export default class CriteriasController {
     const { id } = request.params;
 
     const criteria = await deleteCriteria.execute(id);
+
+    return response.json(criteria);
+  }
+
+  public async update(request: Request, response: Response): Promise<Response> {
+    const updateCriteria = container.resolve(UpdateCriteriaService);
+
+    const { id } = request.params;
+
+    const criteria = await updateCriteria.execute(id);
 
     return response.json(criteria);
   }

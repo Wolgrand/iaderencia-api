@@ -13,4 +13,5 @@ export default interface ICriteriasRepository {
   findById(id: string): Promise<Criteria>;
   findAll(): Promise<Criteria[]>;
   delete(criteria: Criteria): Promise<Criteria>;
+  update(criteria: Criteria): Promise<Criteria>;
 }
