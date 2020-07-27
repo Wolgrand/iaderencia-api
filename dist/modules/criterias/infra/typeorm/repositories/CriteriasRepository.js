@@ -64,6 +64,11 @@ class CriteriasRepository {
     return criteria;
   }
 
+  async update(criteria) {
+    await this.ormRepository.save(criteria);
+    return criteria;
+  }
+
 }
 
 var _default = CriteriasRepository;

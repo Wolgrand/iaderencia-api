@@ -31,7 +31,10 @@ usersRouter.post('/', (0, _celebrate.celebrate)({
   [_celebrate.Segments.BODY]: {
     name: _celebrate.Joi.string().required(),
     email: _celebrate.Joi.string().email().required(),
-    password: _celebrate.Joi.string().required()
+    password: _celebrate.Joi.string().required(),
+    role: _celebrate.Joi.string(),
+    department: _celebrate.Joi.string(),
+    company: _celebrate.Joi.string()
   }
 }), usersController.create);
 usersRouter.patch('/avatar', _ensureAuthenticated.default, upload.single('avatar'), userAvatarController.update);

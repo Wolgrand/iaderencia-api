@@ -13,6 +13,8 @@ var _ListCriteriaService = _interopRequireDefault(require("../../../services/Lis
 
 var _DeleteCriteriaService = _interopRequireDefault(require("../../../services/DeleteCriteriaService"));
 
+var _UpdateCriteriaService = _interopRequireDefault(require("../../../services/UpdateCriteriaService"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 class CriteriasController {
@@ -22,6 +24,7 @@ class CriteriasController {
       icon,
       score
     } = request.body;
+    console.log(request.body);
 
     const createCriteria = _tsyringe.container.resolve(_CreateCriteriaService.default);
 
@@ -47,6 +50,22 @@ class CriteriasController {
       id
     } = request.params;
     const criteria = await deleteCriteria.execute(id);
+    return response.json(criteria);
+  }
+
+  async update(request, response) {
+    const {
+      title,
+      icon,
+      score
+    } = request.body;
+
+    const updateCriteria = _tsyringe.container.resolve(_UpdateCriteriaService.default);
+
+    const {
+      id
+    } = request.params;
+    const criteria = await updateCriteria.execute(id, title, icon, score);
     return response.json(criteria);
   }
 

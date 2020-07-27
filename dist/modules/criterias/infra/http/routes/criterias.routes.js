@@ -15,6 +15,7 @@ const criteriasRouter = (0, _express.Router)();
 const criteriasController = new _CriteriasController.default();
 criteriasRouter.post('/', criteriasController.create);
 criteriasRouter.delete('/:id', criteriasController.delete);
+criteriasRouter.put('/:id', criteriasController.update);
 criteriasRouter.get('/', criteriasController.show);
 var _default = criteriasRouter;
 exports.default = _default;

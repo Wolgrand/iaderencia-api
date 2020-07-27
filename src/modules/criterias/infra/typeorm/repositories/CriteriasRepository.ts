@@ -8,6 +8,13 @@ interface IFindCriterias {
   id: string;
 }
 
+interface ICriterias {
+  id: string;
+  icon: string;
+  title: string;
+  score: number;
+}
+
 class CriteriasRepository implements ICriteriasRepository {
   private ormRepository: Repository<Criteria>;
 

@@ -29,9 +29,7 @@ class CreateUsers1587554722978 {
         type: 'varchar'
       }, {
         name: 'score',
-        type: 'decimal',
-        precision: 8,
-        scale: 1
+        type: 'integer'
       }, {
         name: 'role',
         type: 'varchar'

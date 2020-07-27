@@ -38,7 +38,7 @@ class UsersRepository {
   async findAllGPs() {
     const users = await this.ormRepository.find({
       where: {
-        role: 'gp'
+        role: 'player'
       }
     });
     return users;

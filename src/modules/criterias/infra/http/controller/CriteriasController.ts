@@ -46,7 +46,7 @@ export default class CriteriasController {
 
     const { id } = request.params;
 
-    const criteria = await updateCriteria.execute(id, title, icon, score);
+    const criteria = await updateCriteria.execute({ id, title, icon, score });
 
     return response.json(criteria);
   }

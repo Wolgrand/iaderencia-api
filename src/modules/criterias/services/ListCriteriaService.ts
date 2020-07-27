@@ -9,6 +9,13 @@ interface IRequest {
   icon: string;
 }
 
+interface ICriteria {
+  id: string;
+  title: string;
+  score: number;
+  icon: string;
+}
+
 @injectable()
 class ListCriteriaService {
   constructor(

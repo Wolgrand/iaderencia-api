@@ -22,16 +22,12 @@ class UpdateCriteriaService {
     title,
     score,
     icon,
-  }: ICriteria): Promise<Criteria> {
-    const findCriteria = await this.criteriasRepository.findById(id);
+  }: ICriteria): Promise<ICriteria> {
+    const updatedCriteria = { id, title, score, icon };
 
-    findCriteria.title = title;
-    findCriteria.score = score;
-    findCriteria.icon = icon;
+    await this.criteriasRepository.update(updatedCriteria);
 
-    await this.criteriasRepository.update(findCriteria);
-
-    return findCriteria;
+    return updatedCriteria;
   }
 }
 
