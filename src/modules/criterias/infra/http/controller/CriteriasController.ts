@@ -40,11 +40,13 @@ export default class CriteriasController {
   }
 
   public async update(request: Request, response: Response): Promise<Response> {
+    const { title, icon, score } = request.body;
+
     const updateCriteria = container.resolve(UpdateCriteriaService);
 
     const { id } = request.params;
 
-    const criteria = await updateCriteria.execute(id);
+    const criteria = await updateCriteria.execute(id, title, icon, score);
 
     return response.json(criteria);
   }
