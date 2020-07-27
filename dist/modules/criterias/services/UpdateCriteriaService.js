@@ -26,12 +26,14 @@ let UpdateCriteriaService = (_dec = (0, _tsyringe.injectable)(), _dec2 = functio
     score,
     icon
   }) {
-    const findCriteria = await this.criteriasRepository.findById(id);
-    findCriteria.title = title;
-    findCriteria.score = score;
-    findCriteria.icon = icon;
-    await this.criteriasRepository.update(findCriteria);
-    return findCriteria;
+    const updatedCriteria = {
+      id,
+      title,
+      score,
+      icon
+    };
+    await this.criteriasRepository.update(updatedCriteria);
+    return updatedCriteria;
   }
 
 }) || _class) || _class) || _class) || _class);

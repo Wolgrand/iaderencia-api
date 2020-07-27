@@ -24,7 +24,6 @@ class CriteriasController {
       icon,
       score
     } = request.body;
-    console.log(request.body);
 
     const createCriteria = _tsyringe.container.resolve(_CreateCriteriaService.default);
 
@@ -65,7 +64,12 @@ class CriteriasController {
     const {
       id
     } = request.params;
-    const criteria = await updateCriteria.execute(id, title, icon, score);
+    const criteria = await updateCriteria.execute({
+      id,
+      title,
+      icon,
+      score
+    });
     return response.json(criteria);
   }
 
