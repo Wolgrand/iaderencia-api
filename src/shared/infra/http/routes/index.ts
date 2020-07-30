@@ -7,6 +7,7 @@ import profileRouter from '@modules/users/infra/http/routes/profile.routes';
 import rankRouter from '@modules/users/infra/http/routes/rank.routes';
 import playerRouter from '@modules/users/infra/http/routes/player.routes';
 import top3Router from '@modules/users/infra/http/routes/top3.routes';
+import top3Department from '@modules/users/infra/http/routes/top3Department.routes';
 import criteriasRouter from '@modules/criterias/infra/http/routes/criterias.routes';
 import transactionsRouter from '@modules/transactions/infra/http/routes/transactions.routes';
 
@@ -14,6 +15,7 @@ const routes = Router();
 
 routes.use('/players', playerRouter);
 routes.use('/top3', top3Router);
+routes.use('/departments', top3Department);
 routes.use('/users', usersRouter);
 routes.use('/sessions', sessionsRouter);
 routes.use('/password', passwordRouter);

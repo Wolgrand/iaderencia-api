@@ -21,6 +21,8 @@ var _player = _interopRequireDefault(require("../../../../modules/users/infra/ht
 
 var _top = _interopRequireDefault(require("../../../../modules/users/infra/http/routes/top3.routes"));
 
+var _top3Department = _interopRequireDefault(require("../../../../modules/users/infra/http/routes/top3Department.routes"));
+
 var _criterias = _interopRequireDefault(require("../../../../modules/criterias/infra/http/routes/criterias.routes"));
 
 var _transactions = _interopRequireDefault(require("../../../../modules/transactions/infra/http/routes/transactions.routes"));
@@ -30,6 +32,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const routes = (0, _express.Router)();
 routes.use('/players', _player.default);
 routes.use('/top3', _top.default);
+routes.use('/departments', _top3Department.default);
 routes.use('/users', _users.default);
 routes.use('/sessions', _sessions.default);
 routes.use('/password', _password.default);
