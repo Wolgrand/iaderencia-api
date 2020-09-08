@@ -3,6 +3,7 @@ require('dotenv').config();
 module.exports = {
   name: 'default',
   type: 'postgres',
+  synchronize: false,
   host: process.env.POSTGRES_HOST,
   port: process.env.POSTGRES_PORT,
   username: process.env.POSTGRES_USER,

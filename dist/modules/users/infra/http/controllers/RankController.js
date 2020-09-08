@@ -7,9 +7,9 @@ exports.default = void 0;
 
 var _tsyringe = require("tsyringe");
 
-var _ListRankService = _interopRequireDefault(require("../../../services/ListRankService"));
-
 var _classTransformer = require("class-transformer");
+
+var _ListRankService = _interopRequireDefault(require("../../../services/ListRankService"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -18,10 +18,9 @@ class RankController {
     const listGPs = _tsyringe.container.resolve(_ListRankService.default);
 
     const list = await listGPs.execute();
+    const array = [];
 
     if (list) {
-      const array = [];
-
       for (let key in list) {
         array.push(list[key]);
       }
@@ -38,9 +37,9 @@ class RankController {
 
         array[i].rank = rank;
       }
-
-      return response.json((0, _classTransformer.classToClass)(array));
     }
+
+    return response.json((0, _classTransformer.classToClass)(array));
   }
 
 }

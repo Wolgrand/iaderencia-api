@@ -9,6 +9,7 @@ import {
 
 import uploadConfig from '@config/upload';
 import TransactionsCriterias from '@modules/transactions/infra/typeorm/entities/TransactionsCriterias';
+import TransactionsRewards from '@modules/transactions-rewards/infra/typeorm/entities/Transactions_Rewards';
 
 import { Exclude, Expose } from 'class-transformer';
 

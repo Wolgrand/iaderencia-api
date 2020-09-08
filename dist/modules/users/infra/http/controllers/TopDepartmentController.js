@@ -26,9 +26,7 @@ class TopDepartmentController {
         array.push(list[key]);
       }
 
-      array.sort(function (a, b) {
-        return b.score - a.score;
-      });
+      array.sort((a, b) => b.score - a.score);
       let rank = 1;
 
       for (let i = 0; i < array.length; i++) {
@@ -54,7 +52,7 @@ class TopDepartmentController {
       const departmentRank = [];
 
       if (departmentTotalScore) {
-        for (let key in departmentTotalScore) {
+        for (const key in departmentTotalScore) {
           departmentRank.push(departmentTotalScore[key]);
         }
 

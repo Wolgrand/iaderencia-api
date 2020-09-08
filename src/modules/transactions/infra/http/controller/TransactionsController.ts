@@ -7,23 +7,6 @@ import CreateTransactionService from '@modules/transactions/services/CreateTrans
 import FindTransactionService from '@modules/transactions/services/FindTransactionService';
 import { classToClass } from 'class-transformer';
 
-interface ITransaction_Criterias {
-  id: string;
-  criteria_id: string;
-  transaction_id: string;
-  score: number;
-  created_at: string;
-  updated_at: string;
-  criteria: {
-    id: string;
-    title: string;
-    icon: string;
-    score: number;
-    created_at: Date;
-    updated_at: Date;
-  };
-}
-
 export default class TransactionController {
   public async show(request: Request, response: Response): Promise<Response> {
     const { user_id } = request.params;

@@ -6,6 +6,8 @@ require("../../modules/users/providers");
 
 require("./providers");
 
+var _RewardsRepository = _interopRequireDefault(require("../../modules/rewards/infra/typeorm/repositories/RewardsRepository"));
+
 var _CriteriasRepository = _interopRequireDefault(require("../../modules/criterias/infra/typeorm/repositories/CriteriasRepository"));
 
 var _TransactionsRepository = _interopRequireDefault(require("../../modules/transactions/infra/typeorm/repositories/TransactionsRepository"));
@@ -16,7 +18,13 @@ var _UserTokensRepository = _interopRequireDefault(require("../../modules/users/
 
 var _NotificationsRepository = _interopRequireDefault(require("../../modules/notifications/infra/typeorm/repositories/NotificationsRepository"));
 
+var _TransactionsRewardRepository = _interopRequireDefault(require("../../modules/transactions-rewards/infra/typeorm/repositories/TransactionsRewardRepository"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_tsyringe.container.registerSingleton('TransactionsRewardRepository', _TransactionsRewardRepository.default);
+
+_tsyringe.container.registerSingleton('RewardsRepository', _RewardsRepository.default);
 
 _tsyringe.container.registerSingleton('CriteriasRepository', _CriteriasRepository.default);
 

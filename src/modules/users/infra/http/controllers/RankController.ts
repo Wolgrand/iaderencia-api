@@ -1,18 +1,17 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import ListRankService from '@modules/users/services/ListRankService';
 import { classToClass } from 'class-transformer';
+import ListRankService from '../../../services/ListRankService';
 
 export default class RankController {
   public async show(request: Request, response: Response): Promise<Response> {
     const listGPs = container.resolve(ListRankService);
 
     const list = await listGPs.execute();
+    const array = [];
 
     if (list) {
-      const array = [];
-
       for (let key in list) {
         array.push(list[key]);
       }
@@ -28,8 +27,7 @@ export default class RankController {
         }
         array[i].rank = rank;
       }
-
-      return response.json(classToClass(array));
     }
+    return response.json(classToClass(array));
   }
 }

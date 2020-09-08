@@ -25,7 +25,11 @@ var _top3Department = _interopRequireDefault(require("../../../../modules/users/
 
 var _criterias = _interopRequireDefault(require("../../../../modules/criterias/infra/http/routes/criterias.routes"));
 
+var _rewards = _interopRequireDefault(require("../../../../modules/rewards/infra/http/routes/rewards.routes"));
+
 var _transactions = _interopRequireDefault(require("../../../../modules/transactions/infra/http/routes/transactions.routes"));
+
+var _transactionsRewards = _interopRequireDefault(require("../../../../modules/transactions-rewards/infra/http/routes/transactions-rewards.routes"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -39,6 +43,8 @@ routes.use('/password', _password.default);
 routes.use('/profile', _profile.default);
 routes.use('/rank', _rank.default);
 routes.use('/transactions', _transactions.default);
+routes.use('/transactions-rewards', _transactionsRewards.default);
 routes.use('/criterias', _criterias.default);
+routes.use('/rewards', _rewards.default);
 var _default = routes;
 exports.default = _default;

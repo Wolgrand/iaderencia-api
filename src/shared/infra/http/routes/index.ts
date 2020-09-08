@@ -9,7 +9,9 @@ import playerRouter from '@modules/users/infra/http/routes/player.routes';
 import top3Router from '@modules/users/infra/http/routes/top3.routes';
 import top3Department from '@modules/users/infra/http/routes/top3Department.routes';
 import criteriasRouter from '@modules/criterias/infra/http/routes/criterias.routes';
+import rewardsRouter from '@modules/rewards/infra/http/routes/rewards.routes';
 import transactionsRouter from '@modules/transactions/infra/http/routes/transactions.routes';
+import transactionsRewardsRouter from '@modules/transactions-rewards/infra/http/routes/transactions-rewards.routes';
 
 const routes = Router();
 
@@ -22,6 +24,8 @@ routes.use('/password', passwordRouter);
 routes.use('/profile', profileRouter);
 routes.use('/rank', rankRouter);
 routes.use('/transactions', transactionsRouter);
+routes.use('/transactions-rewards', transactionsRewardsRouter);
 routes.use('/criterias', criteriasRouter);
+routes.use('/rewards', rewardsRouter);
 
 export default routes;
