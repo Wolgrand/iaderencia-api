@@ -18,7 +18,9 @@ export default class TransactionRewardsController {
       user_id,
     });
 
-    return response.json(classToClass(transaction));
+    const rewardList = transaction?.map(item => item.reward);
+
+    return response.json(classToClass(rewardList));
   }
 
   public async delete(request: Request, response: Response): Promise<Response> {
